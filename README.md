@@ -1,0 +1,1 @@
+# direct-delete-sql-maker
