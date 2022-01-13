@@ -16,10 +16,13 @@ def getRows(sql):
 
 
 def putSql(sqlArr):
+    prefix = "[確認必要]"
     print("=========================")
     print("working sql")
     print("=========================")
     for sql in sqlArr:
+        if sql.find("None") != -1:
+            sql = f"{prefix} {sql}"
         print(sql + ";")
         print(sql.replace('SELECT *', 'DELETE') + ";")
         print(sql + ";")
