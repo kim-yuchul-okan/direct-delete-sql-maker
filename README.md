@@ -6,12 +6,6 @@
 - Python 3.7.12
 - MySQL 5.6
 
-## Usage
-
-```sh
-python src/make_delete_company.py {company_id}
-```
-
 ## setup
 
 - clone
@@ -21,4 +15,52 @@ python src/make_delete_company.py {company_id}
 - library install
   ```sh
   pip install mysqlclient
+  ```
+
+## Usage
+
+- Usage
+
+  ```sh
+  python src/make_delete_company.py {company_id}
+  ```
+
+- 例
+
+  - ターミナルで実行したら、以下のように表示されます。
+  - `working sql`以下の SQL が対象のものになります。
+  - `[確認必要]`が付けられた SQL は、別途で確認してください。怪しいものなので
+
+  ```sh
+  $ python src/make_delete_company.py "XXXX"
+  {'companyId': XXXX, 'contactId': XXXXXX, 'contractId': XXXX, 'boxId': XXXX00, 'itemRequestId': None, 'maintenanceScheduleId': None, 'invoiceId': None, 'maintenanceId': None, 'noteUserId': XXXXXXX}
+  rows: 1
+  ok -> SELECT * FROM `companies` WHERE company_id = XXXX
+  rows: 0
+  ng -> SELECT * FROM `company_extents` WHERE company_id = XXXX
+  rows: 1
+  ok -> SELECT * FROM `contacts` WHERE company_id = XXXX
+  rows: 0
+  ng -> SELECT * FROM `contracts` WHERE company_id = XXXX
+  rows: 1
+  ok -> SELECT * FROM `tmp_contracts` WHERE company_id = XXXX
+  ... 略 ...
+  ['SELECT * FROM `companies` WHERE company_id = XXXX', 'SELECT * FROM `contacts` WHERE company_id = XXXX', 'SELECT * FROM `tmp_contracts` WHERE company_id = XXXX',  ... 略 ... ]
+  =========================
+  working sql
+  =========================
+  SELECT * FROM `companies` WHERE company_id = XXXX;
+  DELETE FROM `companies` WHERE company_id = XXXX;
+  SELECT * FROM `companies` WHERE company_id = XXXX;
+  SELECT * FROM `contacts` WHERE company_id = XXXX;
+  DELETE FROM `contacts` WHERE company_id = XXXX;
+  SELECT * FROM `contacts` WHERE company_id = XXXX;
+  SELECT * FROM `tmp_contracts` WHERE company_id = XXXX;
+  DELETE FROM `tmp_contracts` WHERE company_id = XXXX;
+  SELECT * FROM `tmp_contracts` WHERE company_id = XXXX;
+  ... 略 ...
+  [確認必要] SELECT * FROM `invoice_details` WHERE invoice_id = 'None';
+  [確認必要] DELETE FROM `invoice_details` WHERE invoice_id = 'None';
+  [確認必要] SELECT * FROM `invoice_details` WHERE invoice_id = 'None';
+  $
   ```
