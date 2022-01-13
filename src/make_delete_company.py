@@ -1,6 +1,6 @@
+import sys
 import lib.db as DB
 import lib.definition as d
-
 
 conn = DB.getConn('root', '', 'localhost', 'subsystem')
 cur = conn.cursor()
@@ -83,12 +83,12 @@ def setKey():
     print(key)
 
 
-def main():
-    key['companyId'] = 3147
+def main(companyId):
+    key['companyId'] = companyId
     companyExist = existCompany()
     if not companyExist:
         DB.db_close(cur, conn)
-        exit()
+        sys.exit()
 
     setKey()
     new_sql = dryPutSql(d.make_sql(key))
@@ -97,4 +97,12 @@ def main():
     DB.db_close(cur, conn)
 
 
-main()
+if __name__ == "__main__":
+    args = sys.argv
+    if 2 <= len(args):
+        if args[1].isdigit():
+            main(int(args[1]))
+        else:
+            print('Argument is not digit')
+    else:
+        print('Arguments are too short')
