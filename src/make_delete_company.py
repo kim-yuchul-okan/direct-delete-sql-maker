@@ -2,6 +2,7 @@ import sys
 import lib.db as DB
 import lib.definition as d
 
+# getConn({DB User Name}, '{DB User Password}', '{DB Host}', '{DB Name}')
 conn = DB.getConn('root', '', 'localhost', 'subsystem')
 cur = conn.cursor()
 key = d.Keys
