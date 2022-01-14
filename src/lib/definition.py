@@ -90,7 +90,7 @@ def make_sql(key):
         f"SELECT * FROM `plan_revision_logs` WHERE contract_id = {key['contractId']}",
         f"SELECT * FROM `plan_revision_send_logs` WHERE contract_id = {key['contractId']}",
         f"SELECT * FROM `schedule_adjustment_requests` WHERE contract_id = {key['contractId']} OR note_user_id = {key['noteUserId']}",
-        f"SELECT * FROM `schedule_mail_send_logs` WHERE contract_id = {key['contractId']}",
+        # f"SELECT * FROM `schedule_mail_send_logs` WHERE contract_id = {key['contractId']}",
         f"SELECT * FROM `statement_of_delivery_send_log_details` WHERE statement_of_delivery_send_log_id in (SELECT statement_of_delivery_send_log_id FROM `statement_of_delivery_send_logs` WHERE contract_id = {key['contractId']})",
         f"SELECT * FROM `statement_of_delivery_send_logs` WHERE contract_id = {key['contractId']}",
         f"SELECT * FROM `tft_donation_requests` WHERE contract_id = {key['contractId']}",
