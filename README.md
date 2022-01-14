@@ -16,12 +16,12 @@
   ```sh
   pip install mysqlclient
   ```
-- [db.py](./lib/db.py) ７行目にてローカル環境の`mysql.sock`の Path を合わせてください。
+- [db.py](./lib/db.py) ８行目にてローカル環境の`mysql.sock`の Path を合わせてください。
   ```py
   # mysql.sockのPath
   unix_socket='/tmp/mysql.sock',
   ```
-- [make_delete_company.py](./make_delete_company.py) ５行目にてローカル環境の DB 接続環境を合わせてください。
+- [make_delete_company.py](./make_delete_company.py) ６行目にてローカル環境の DB 接続環境を合わせてください。
   ```py
   # getConn({DB User Name}, '{DB User Password}', '{DB Host}', '{DB Name}')
   conn = DB.getConn('root', '', 'localhost', 'subsystem')
