@@ -29,7 +29,7 @@ def make_sql(key):
         f"SELECT * FROM `tmp_contracts` WHERE company_id = {key['companyId']}",
         f"SELECT * FROM `invoice_send_logs` WHERE company_id = {key['companyId']}",
         f"SELECT * FROM `mapping_companies_contacts` WHERE contact_id = {key['contactId']}",
-        f"SELECT * FROM `note_users` WHERE company_id = {key['companyId']} OR contract_id = {key['contractId']}{key['contractId']} OR contact_id = {key['contactId']}",
+        f"SELECT * FROM `note_users` WHERE company_id = {key['companyId']} OR contract_id = {key['contractId']} OR contact_id = {key['contactId']}",
         f"SELECT * FROM `application_send_logs` WHERE contract_id = {key['contractId']}",
         f"SELECT * FROM `auto_renewal_contracts_office_options` WHERE contract_id = {key['contractId']}",
         f"SELECT * FROM `boxes` WHERE contract_id = {key['contractId']}",
