@@ -16,7 +16,7 @@
   ```sh
   pip install mysqlclient
   ```
-- [db.py](./lib/db.py) ８行目にてローカル環境の`mysql.sock`の Path を合わせてください。
+- [db.py](./lib/db.py) ８ 3 行目にてローカル環境の`mysql.sock`の Path を合わせてください。
   ```py
   # mysql.sockのPath
   unix_socket='/tmp/mysql.sock',
